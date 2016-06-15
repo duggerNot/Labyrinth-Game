@@ -3,12 +3,7 @@ using System.Collections;
 
 public class BoardController : MonoBehaviour {
 
-    // Use this for initialization
-    //void Start () {
 
-    //}
-
-    // Update is called once per frame
     public float horizontalSpeed = 3.0F;
     public float verticalSpeed = 3.0F;
 
