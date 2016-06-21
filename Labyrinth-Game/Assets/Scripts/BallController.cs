@@ -10,14 +10,18 @@ public class BallController : MonoBehaviour
     public Text scoreText;
     public Text winText;
 
+
+    //Initialize Game
     void Start()
     {
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
         rb.sleepThreshold = -1f;
         SetScoreText();
         winText.text = "";
+
     }
 
+    //Handle "game reset" and "Finish" zones
     void OnTriggerEnter(Collider zone)
     {
         if (zone.gameObject.CompareTag("Game Reset"))
@@ -28,13 +32,23 @@ public class BallController : MonoBehaviour
         }
         if (zone.gameObject.CompareTag("Finish"))
         {
-            winText.text = "Well Done!  You Did It!";
+            StartCoroutine(EndGame());
         }
     }
 
+    //Applying the the "score" to the scene ui
     void SetScoreText()
     {
         scoreText.text = "Tries: " + Score.ToString();
+    }
+
+    //coroutine to handle what happens when the game ends
+    //returns to the menu screen
+    IEnumerator EndGame()
+    {
+        winText.text = "Well Done!  You Did It!";
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("Game-Menu");
     }
 
 }
