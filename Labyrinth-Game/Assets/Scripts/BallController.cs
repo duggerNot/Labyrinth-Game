@@ -18,7 +18,7 @@ public class BallController : MonoBehaviour
         rb.sleepThreshold = -1f;
         SetScoreText();
         winText.text = "";
-
+        StartCoroutine(BackToMenu());
     }
 
     //Handle "game reset" and "Finish" zones
@@ -48,6 +48,13 @@ public class BallController : MonoBehaviour
     {
         winText.text = "Well Done!  You Did It!";
         yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("Game-Menu");
+    }
+
+    //coroutine to handle leaving the game while playing
+    IEnumerator BackToMenu()
+    {
+        yield return new WaitUntil(() => Input.GetKeyUp(KeyCode.Escape));
         SceneManager.LoadScene("Game-Menu");
     }
 
