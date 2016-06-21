@@ -4,8 +4,8 @@ using System.Collections;
 public class BoardController : MonoBehaviour {
 
 
-    public float horizontalSpeed = 3.0F;
-    public float verticalSpeed = 3.0F;
+    public float horizontalSpeed = 0.5F;
+    public float verticalSpeed = 0.5F;
 
 
     void FixedUpdate()
