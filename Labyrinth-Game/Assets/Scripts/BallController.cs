@@ -19,6 +19,7 @@ public class BallController : MonoBehaviour
         SetScoreText();
         winText.text = "";
         StartCoroutine(BackToMenu());
+        Cursor.visible = false;
     }
 
     //Handle "game reset" and "Finish" zones
@@ -51,11 +52,13 @@ public class BallController : MonoBehaviour
         SceneManager.LoadScene("Game-Menu");
     }
 
-    //coroutine to handle leaving the game while playing
+    //coroutine to handle returning to the menu while playing
     IEnumerator BackToMenu()
     {
         yield return new WaitUntil(() => Input.GetKeyUp(KeyCode.Escape));
         SceneManager.LoadScene("Game-Menu");
+        Cursor.visible = true;
+        Score = 1; //reset tries to 1
     }
 
 }
